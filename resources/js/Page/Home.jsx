@@ -1,6 +1,11 @@
+import { Button } from 'primereact/button'
+
 const Home = () => {
     return (
-        <div>Home</div>
+        <div>
+            <Button label="Submit" />
+            <span className="text-1">Home</span>
+        </div>
     )
 }
 
