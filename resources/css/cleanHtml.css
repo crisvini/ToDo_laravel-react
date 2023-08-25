@@ -1,3 +1,14 @@
+:root {
+    --darker-green: #003840 !important;
+    --dark-green: #005A5B !important;
+    --green: #007369 !important;
+    --light-green: #008C72 !important;
+    --lighter-green: #02A676 !important;
+    --gray: #1e1e20 !important;
+    --black: #18181a !important;
+    --white: #ffffff !important;
+}
+
 html,
 body,
 span,
@@ -103,6 +114,8 @@ section {
 body {
     line-height: 1;
     font-family: 'Poppins', sans-serif !important;
+    background-color: var(--gray) !important;
+    color: var(--white);
 }
 
 ol,

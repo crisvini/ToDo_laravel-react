@@ -2,14 +2,6 @@ import { Link, NavLink } from "react-router-dom"
 
 const Navbar = ({ redirect, redirectName }) => {
     return (
-        // <nav className="custom-navbar d-flex justify-content-between align-items-center py-2 px-3">
-        //     <div>
-        //         <Link to='/'>ToDo</Link>
-        //     </div>
-        //     <div>
-        //         <Link className="button-1" to={redirect}>{redirectName}</Link>
-        //     </div>
-        // </nav>
         <nav className="background-7 nav">
             <div className="nav-links">
                 <div>
@@ -17,7 +9,7 @@ const Navbar = ({ redirect, redirectName }) => {
                 </div>
             </div>
             <div>
-                <Link to="/list" className="button-1 text-decoration-none"><i className="bi bi-list-task"></i>&nbsp;See table</Link>
+                <Link to={redirect} className="button-1 text-decoration-none fs-08"><i className="bi bi-list-task"></i>&nbsp;{redirectName}</Link>
             </div>
         </nav >
     )
