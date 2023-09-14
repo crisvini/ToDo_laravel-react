@@ -14,7 +14,7 @@ return new class extends Migration
             $table->string('description');
             $table->enum('status', ['backlog', 'to do', 'doing', 'done'])->default('backlog');
             $table->timestamps();
-            $table->timestamp('concluded')->nullable();
+            $table->boolean('concluded')->default(false);
         });
     }
 

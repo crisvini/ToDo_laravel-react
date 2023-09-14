@@ -3,6 +3,8 @@ import Header from '../components/Header'
 import { DataTable } from 'primereact/datatable'
 import { Column } from 'primereact/column'
 
+import { useState, useEffect } from 'react'
+
 const data =
     [
         {
@@ -34,20 +36,34 @@ const data =
         }
     ]
 
+const urlGetTasks = 'http://localhost:8000/getTasks'
+
 const List = () => {
+    const [tasks, setTasks] = useState([])
+
+    useEffect(() => {
+        async function fetchData() {
+            const res = await fetch(urlGetTasks)
+            const data = await res.json()
+            setTasks(data)
+        }
+
+        fetchData()
+    }, [])
+
     return (
         <>
             <Navbar redirect='/kanban' redirectName='See kanban' />
             <Header title='Table' />
             <main className='main background-7'>
-                <DataTable value={data} paginatorTemplate="RowsPerPageDropdown FirstPageLink PrevPageLink CurrentPageReport NextPageLink LastPageLink" currentPageReportTemplate="{first} to {last} of {totalRecords}" emptyMessage="No tasks found." paginator rows={10} rowsPerPageOptions={[10, 25, 50]} removableSort sortField="code" sortOrder={-1} className='w-100'>
-                    <Column sortable field="code" header="code"></Column>
+                <DataTable value={tasks} paginatorTemplate="RowsPerPageDropdown FirstPageLink PrevPageLink CurrentPageReport NextPageLink LastPageLink" currentPageReportTemplate="{first} to {last} of {totalRecords}" emptyMessage="No tasks found." paginator rows={10} rowsPerPageOptions={[10, 25, 50]} removableSort sortField="code" sortOrder={-1} className='w-100'>
+                    <Column sortable field="id" header="id"></Column>
                     <Column sortable field="name" header="name"></Column>
                     <Column sortable field="description" header="description"></Column>
                     <Column sortable field="status" header="status"></Column>
-                    <Column sortable field="created" header="created"></Column>
+                    <Column sortable field="created_at" header="created"></Column>
                     <Column sortable field="concluded" header="concluded"></Column>
-                    <Column header="delete"></Column>
+                    <Column header="delete" onClick={console.log('teste')}></Column>
                 </DataTable>
             </main>
         </>
